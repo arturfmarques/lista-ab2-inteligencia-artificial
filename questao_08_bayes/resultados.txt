@@ -1,0 +1,168 @@
+Rede com 10 variáveis e 11 arcos.
+TABELAS DE PROBABILIDADES CONDICIONAIS
+
+EpocaChuvosa
++-------------------+-----+
+| EpocaChuvosa(Sim) | 0.4 |
++-------------------+-----+
+| EpocaChuvosa(Nao) | 0.6 |
++-------------------+-----+
+
+CasoVizinhanca
++---------------------+-------------------+-------------------+
+| EpocaChuvosa        | EpocaChuvosa(Sim) | EpocaChuvosa(Nao) |
++---------------------+-------------------+-------------------+
+| CasoVizinhanca(Sim) | 0.3               | 0.08              |
++---------------------+-------------------+-------------------+
+| CasoVizinhanca(Nao) | 0.7               | 0.92              |
++---------------------+-------------------+-------------------+
+
+Dengue
++----------------+-----+---------------------+
+| EpocaChuvosa   | ... | EpocaChuvosa(Nao)   |
++----------------+-----+---------------------+
+| CasoVizinhanca | ... | CasoVizinhanca(Nao) |
++----------------+-----+---------------------+
+| Dengue(Sim)    | ... | 0.01                |
++----------------+-----+---------------------+
+| Dengue(Nao)    | ... | 0.99                |
++----------------+-----+---------------------+
+
+Gripe
++------------+-----+
+| Gripe(Sim) | 0.1 |
++------------+-----+
+| Gripe(Nao) | 0.9 |
++------------+-----+
+
+Febre
++------------+----------------------+-----+-------------+
+| Dengue     | Dengue(Sim)          | ... | Dengue(Nao) |
++------------+----------------------+-----+-------------+
+| Gripe      | Gripe(Sim)           | ... | Gripe(Nao)  |
++------------+----------------------+-----+-------------+
+| Febre(Sim) | 0.98                 | ... | 0.1         |
++------------+----------------------+-----+-------------+
+| Febre(Nao) | 0.020000000000000018 | ... | 0.9         |
++------------+----------------------+-----+-------------+
+
+DorMuscular
++------------------+-----+-------------+-------------+
+| Dengue           | ... | Dengue(Nao) | Dengue(Nao) |
++------------------+-----+-------------+-------------+
+| Gripe            | ... | Gripe(Sim)  | Gripe(Nao)  |
++------------------+-----+-------------+-------------+
+| DorMuscular(Sim) | ... | 0.75        | 0.1         |
++------------------+-----+-------------+-------------+
+| DorMuscular(Nao) | ... | 0.25        | 0.9         |
++------------------+-----+-------------+-------------+
+
+DorRetroOrbital
++----------------------+-------------+-------------+
+| Dengue               | Dengue(Sim) | Dengue(Nao) |
++----------------------+-------------+-------------+
+| DorRetroOrbital(Sim) | 0.6         | 0.05        |
++----------------------+-------------+-------------+
+| DorRetroOrbital(Nao) | 0.4         | 0.95        |
++----------------------+-------------+-------------+
+
+ManchasPele
++------------------+-------------+-------------+
+| Dengue           | Dengue(Sim) | Dengue(Nao) |
++------------------+-------------+-------------+
+| ManchasPele(Sim) | 0.45        | 0.03        |
++------------------+-------------+-------------+
+| ManchasPele(Nao) | 0.55        | 0.97        |
++------------------+-------------+-------------+
+
+TesteNS1
++---------------+---------------------+-------------+
+| Dengue        | Dengue(Sim)         | Dengue(Nao) |
++---------------+---------------------+-------------+
+| TesteNS1(Sim) | 0.8                 | 0.03        |
++---------------+---------------------+-------------+
+| TesteNS1(Nao) | 0.19999999999999996 | 0.97        |
++---------------+---------------------+-------------+
+
+Tosse
++------------+---------------------+------------+
+| Gripe      | Gripe(Sim)          | Gripe(Nao) |
++------------+---------------------+------------+
+| Tosse(Sim) | 0.8                 | 0.1        |
++------------+---------------------+------------+
+| Tosse(Nao) | 0.19999999999999996 | 0.9        |
++------------+---------------------+------------+
+
+INDEPENDÊNCIAS CONDICIONAIS (d-separação) verificadas na rede
+  DorRetroOrbital ⟂ Febre | Dengue: sim
+  ManchasPele ⟂ TesteNS1 | Dengue: sim
+  EpocaChuvosa ⟂ Febre | Dengue: sim
+  Tosse ⟂ Dengue: sim
+  Tosse ⟂ Dengue | Febre: NÃO (dependentes)
+  Gripe ⟂ Dengue: sim
+  Gripe ⟂ Dengue | Febre: NÃO (dependentes)
+  CasoVizinhanca ⟂ ManchasPele | Dengue: sim
+
+PROBABILIDADES A PRIORI (sem evidências)
+  P(EpocaChuvosa=Sim) = 0.4000
+  P(CasoVizinhanca=Sim) = 0.1680
+  P(Dengue=Sim) = 0.0474
+  P(Gripe=Sim) = 0.1000
+  P(Febre=Sim) = 0.2118
+  P(TesteNS1=Sim) = 0.0665
+
+==============================================================================
+Experimento 1: diagnóstico com inclusão sucessiva de sintomas
+------------------------------------------------------------------------------
+  Evidências acumuladas                                                                     P(Dengue=Sim)  P(Gripe=Sim)  
+  (nenhuma)                                                                                         0.0474        0.1000
+  Febre=Sim                                                                                         0.2131        0.4041
+  Febre=Sim, DorMuscular=Sim                                                                        0.3591        0.6024
+  Febre=Sim, DorMuscular=Sim, DorRetroOrbital=Sim                                                   0.8705        0.2123
+  Febre=Sim, DorMuscular=Sim, DorRetroOrbital=Sim, ManchasPele=Sim                                  0.9902        0.1210
+
+==============================================================================
+Experimento 2: explicação alternativa (explaining away) com tosse
+------------------------------------------------------------------------------
+  Evidências acumuladas                                                                     P(Dengue=Sim)  P(Gripe=Sim)  
+  (nenhuma)                                                                                         0.0474        0.1000
+  Febre=Sim                                                                                         0.2131        0.4041
+  Febre=Sim, DorMuscular=Sim                                                                        0.3591        0.6024
+  Febre=Sim, DorMuscular=Sim, Tosse=Sim                                                             0.1235        0.9238
+
+==============================================================================
+Experimento 3: contexto epidemiológico e teste NS1 positivo
+------------------------------------------------------------------------------
+  Evidências acumuladas                                                                     P(Dengue=Sim)  
+  (nenhuma)                                                                                         0.0474
+  Febre=Sim                                                                                         0.2131
+  Febre=Sim, DorRetroOrbital=Sim                                                                    0.7646
+  Febre=Sim, DorRetroOrbital=Sim, EpocaChuvosa=Sim                                                  0.8728
+  Febre=Sim, DorRetroOrbital=Sim, EpocaChuvosa=Sim, CasoVizinhanca=Sim                              0.9423
+  Febre=Sim, DorRetroOrbital=Sim, EpocaChuvosa=Sim, CasoVizinhanca=Sim, TesteNS1=Sim                0.9977
+
+==============================================================================
+Experimento 4: comparação de conjuntos de evidências
+------------------------------------------------------------------------------
+  Evidências                                                             P(Dengue)  P(Gripe)
+  Febre=Sim, DorRetroOrbital=Sim, ManchasPele=Sim                           0.9799    0.1105
+  Febre=Sim, DorRetroOrbital=Sim, ManchasPele=Sim, TesteNS1=Nao             0.9095    0.1375
+  Febre=Sim, DorRetroOrbital=Sim, ManchasPele=Sim, EpocaChuvosa=Nao         0.9395    0.1260
+  Febre=Sim, DorMuscular=Sim, Tosse=Sim, TesteNS1=Nao                       0.0282    0.9692
+  Febre=Nao, DorMuscular=Sim                                                0.0212    0.1204
+
+==============================================================================
+Influência de cada evidência isolada sobre P(Dengue=Sim)
+------------------------------------------------------------------------------
+  A priori: 0.0474
+  Evidência                   P(Dengue|Sim)  P(Dengue|Nao)  razão Sim/priori
+  Febre                              0.2131         0.0028              4.50
+  DorMuscular                        0.2058         0.0083              4.35
+  DorRetroOrbital                    0.3737         0.0205              7.89
+  ManchasPele                        0.4272         0.0274              9.02
+  Tosse                              0.0474         0.0474              1.00
+  TesteNS1                           0.5700         0.0101             12.04
+  CasoVizinhanca                     0.1657         0.0235              3.50
+  EpocaChuvosa                       0.0950         0.0156              2.01
+
+Arquivos gerados: rede_dengue.bif, rede_dengue.xmlbif, rede_dengue.png

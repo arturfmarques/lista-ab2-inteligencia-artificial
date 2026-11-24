@@ -1,0 +1,87 @@
+==========================================================================================
+Professor: Preciso preparar uma aula de Inteligência Artificial, corrigir trabalhos de alunos e participar de uma reunião de pesquisa. Tenho apenas quatro horas disponíveis hoje. A preparação da aula é urgente, mas a correção dos trabalhos precisa ser concluída até amanhã. Organize minhas atividades da melhor maneira possível.
+------------------------------------------------------------------------------------------
+Assistente: Organizei suas atividades assim:
+- 14:00–15:30: Preparar aula de IA
+- 16:00–17:00: Reunião de pesquisa
+Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 7.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois).
+O plano passou na verificação de restrições.
+
+── Base da decisão (planejador e verificador, não o LLM) ──
+  14:00-15:30  A  Preparar aula de IA
+  16:00-17:00  C  Reunião de pesquisa
+  Utilidade: 30 de 37.2 possíveis. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
+  Tempo livre: 15:30-16:00, 17:00-18:00
+  A (Preparar aula de IA): incluída: prioridade alta, prazo hoje, utilidade 15
+  B (Corrigir trabalhos): não incluída: incluí-la daria utilidade total 7.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois
+  C (Reunião de pesquisa): compromisso fixo às 16:00; mantido no horário (utilidade 15)
+  Verificação: plano válido (sem sobreposição, dentro da janela, compromissos fixos respeitados).
+==========================================================================================
+Professor: /explicar
+------------------------------------------------------------------------------------------
+Rastro do último pedido:
+  [usuário] Preciso preparar uma aula de Inteligência Artificial, corrigir trabalhos de alunos e participar de uma reunião de pesquisa. Tenho apenas quatro horas disponíveis hoje. A preparação da aula é urgente, mas a correção dos trabalhos precisa ser concluída até amanhã. Organize minhas atividades da melhor maneira possível.
+  [1] LLM chamou consultar_agenda({"data": "hoje"})
+      resultado: janela 14:00-18:00; fixos: Reunião de pesquisa; 4 tarefas pendentes
+  [2] LLM chamou planejar_atividades({"tarefas": [{"id": "A", "nome": "Preparar aula de IA", "duracao_min": 90, "prioridade": "alta", "prazo": "hoje", "divisivel": false}, {"id": "B", "nome": "Corrigir trabalhos", "duracao_min": 120, "prioridade": "media", ...)
+      resultado: 2 blocos, utilidade 30, não realizadas: B
+  [3] LLM chamou verificar_plano({"plano": [{"inicio": "14:00", "fim": "15:30", "tarefa": "A"}, {"inicio": "16:00", "fim": "17:00", "tarefa": "C"}], "tarefas": [{"id": "A", "nome": "Preparar aula de IA", "duracao_min": 90, "prioridade": "alta", "prazo":...)
+      resultado: válido
+  [LLM] Organizei suas atividades assim:
+- 14:00–15:30: Preparar aula de IA
+- 16:00–17:00: Reunião de pesquisa
+Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 7.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois).
+O plano passou na verificação de restrições.
+==========================================================================================
+Professor: Quero aproveitar o resto da tarde para revisar o artigo também. Organize de novo, incluindo a revisão do artigo.
+------------------------------------------------------------------------------------------
+Assistente: Organizei suas atividades assim:
+- 14:00–15:30: Preparar aula de IA
+- 16:00–17:00: Reunião de pesquisa
+- 17:00–18:00: Revisar artigo
+Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 9.2 em vez de 32 (A sairia); o prazo (amanha) permite fazer depois).
+O plano passou na verificação de restrições.
+
+── Base da decisão (planejador e verificador, não o LLM) ──
+  14:00-15:30  A  Preparar aula de IA
+  16:00-17:00  C  Reunião de pesquisa
+  17:00-18:00  D  Revisar artigo
+  Utilidade: 32 de 39.2 possíveis. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
+  Tempo livre: 15:30-16:00
+  A (Preparar aula de IA): incluída: prioridade alta, prazo hoje, utilidade 15
+  B (Corrigir trabalhos): não incluída: incluí-la daria utilidade total 9.2 em vez de 32 (A sairia); o prazo (amanha) permite fazer depois
+  C (Reunião de pesquisa): compromisso fixo às 16:00; mantido no horário (utilidade 15)
+  D (Revisar artigo): incluída: prioridade baixa, prazo semana, utilidade 2
+  Verificação: plano válido (sem sobreposição, dentro da janela, compromissos fixos respeitados).
+==========================================================================================
+Professor: E se eu puder dividir a correção dos trabalhos em partes?
+------------------------------------------------------------------------------------------
+Assistente: Organizei suas atividades assim:
+- 14:00–15:30: Preparar aula de IA
+- 15:30–16:00: Corrigir trabalhos
+- 16:00–17:00: Reunião de pesquisa
+- 17:00–18:00: Corrigir trabalhos
+Ficou de fora: Revisar artigo (não incluída: incluí-la daria utilidade total 18.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois).
+Corrigir trabalhos foi feita em parte (90 min); o restante fica para depois.
+O plano passou na verificação de restrições.
+
+── Base da decisão (planejador e verificador, não o LLM) ──
+  14:00-15:30  A  Preparar aula de IA
+  15:30-16:00  B  Corrigir trabalhos
+  16:00-17:00  C  Reunião de pesquisa
+  17:00-18:00  B  Corrigir trabalhos
+  Utilidade: 35.4 de 39.2 possíveis. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
+  A (Preparar aula de IA): incluída: prioridade alta, prazo hoje, utilidade 15
+  B (Corrigir trabalhos): incluída em parte (90 de 120 min): o tempo livre não comporta a tarefa inteira; utilidade 5.4 de 7.2
+  C (Reunião de pesquisa): compromisso fixo às 16:00; mantido no horário (utilidade 15)
+  D (Revisar artigo): não incluída: incluí-la daria utilidade total 18.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois
+  Verificação: plano válido (sem sobreposição, dentro da janela, compromissos fixos respeitados).
+==========================================================================================
+Professor: Por que a revisão do artigo ficou de fora?
+------------------------------------------------------------------------------------------
+Assistente: Revisar artigo: não incluída: incluí-la daria utilidade total 18.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
+==========================================================================================
+Professor: /porque B
+------------------------------------------------------------------------------------------
+B: incluída em parte (90 de 120 min): o tempo livre não comporta a tarefa inteira; utilidade 5.4 de 7.2
+Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0)

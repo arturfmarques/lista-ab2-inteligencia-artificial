@@ -1,0 +1,117 @@
+====================================================================================================
+Exemplo 1: quadro típico, sugestão confirmada e retida
+----------------------------------------------------------------------------------------------------
+Consulta: sintomas = febre, dor_atras_olhos, dor_muscular, dor_cabeca, manchas_pele; temperatura = 39.1 °C; duração = 3 dia(s); idade = 26
+
+[Recuperação] Casos mais semelhantes
+  Caso  Sim.   sintomas  temp.  duração  Diagnóstico         Sintomas do caso
+  C07   0.914  0.900     0.92   1.00     Dengue              febre, dor_atras_olhos, dor_muscular, dor_cabeca, manchas_pele, fadiga
+  C09   0.744  0.667     0.96   0.86     Dengue              febre, dor_cabeca, manchas_pele, dor_articular, dor_atras_olhos, vomito
+  C08   0.581  0.417     0.98   0.93     Dengue              febre, dor_atras_olhos, dor_muscular, dor_articular, nausea
+
+[Reutilização] Votam os casos com similaridade >= 0.777 (85% da maior); fora da margem: C09, C08
+  Pontuação por diagnóstico (soma das similaridades):
+  Dengue              0.914
+  Diagnóstico sugerido: Dengue (confiança 100%, baseado no caso C07)
+  Tratamento associado: Hidratação oral vigorosa, repouso, paracetamol com orientação médica; evitar AINEs e AAS; observar sinais de alarme.
+
+[Revisão] Diagnóstico confirmado: Dengue
+[Retenção] Caso gravado na base como C21. A base tem agora 21 casos.
+====================================================================================================
+Exemplo 2: sintomas compartilhados por várias doenças
+----------------------------------------------------------------------------------------------------
+Consulta: sintomas = febre, tosse, fadiga, dor_cabeca; temperatura = 38.4 °C; duração = 3 dia(s); idade = 40
+
+[Recuperação] Casos mais semelhantes
+  Caso  Sim.   sintomas  temp.  duração  Diagnóstico         Sintomas do caso
+  C01   0.743  0.667     0.88   1.00     Gripe (influenza)   febre, tosse, dor_muscular, dor_cabeca, fadiga, dor_garganta
+  C10   0.685  0.571     0.96   0.93     COVID-19            febre, tosse, perda_olfato, fadiga, dor_cabeca
+  C02   0.600  0.462     0.92   0.93     Gripe (influenza)   febre, tosse, dor_muscular, fadiga, calafrios
+
+[Reutilização] Votam os casos com similaridade >= 0.631 (85% da maior); fora da margem: C02
+  Pontuação por diagnóstico (soma das similaridades):
+  Gripe (influenza)   0.743
+  COVID-19            0.685
+  Diagnóstico sugerido: Gripe (influenza) (confiança 52%, baseado no caso C01)
+  Tratamento associado: Repouso, hidratação e antitérmico/analgésico com orientação médica; avaliar antiviral nos grupos de risco.
+
+[Revisão] Sugestão não revisada; o caso não foi retido.
+====================================================================================================
+Exemplo 3: mesma consulta, agora com perda de olfato (sintoma discriminante)
+----------------------------------------------------------------------------------------------------
+Consulta: sintomas = febre, tosse, fadiga, dor_cabeca, perda_olfato; temperatura = 38.4 °C; duração = 3 dia(s); idade = 40
+
+[Recuperação] Casos mais semelhantes
+  Caso  Sim.   sintomas  temp.  duração  Diagnóstico         Sintomas do caso
+  C10   0.985  1.000     0.96   0.93     COVID-19            febre, tosse, perda_olfato, fadiga, dor_cabeca
+  C01   0.587  0.444     0.88   1.00     Gripe (influenza)   febre, tosse, dor_muscular, dor_cabeca, fadiga, dor_garganta
+  C02   0.498  0.316     0.92   0.93     Gripe (influenza)   febre, tosse, dor_muscular, fadiga, calafrios
+
+[Reutilização] Votam os casos com similaridade >= 0.837 (85% da maior); fora da margem: C01, C02
+  Pontuação por diagnóstico (soma das similaridades):
+  COVID-19            0.985
+  Diagnóstico sugerido: COVID-19 (confiança 100%, baseado no caso C10)
+  Tratamento associado: Isolamento, repouso, hidratação, sintomáticos; procurar atendimento se houver falta de ar; testagem.
+
+[Revisão] Diagnóstico confirmado: COVID-19
+[Retenção] Caso gravado na base como C22. A base tem agora 22 casos.
+====================================================================================================
+Exemplo 4: sem temperatura medida (peso renormalizado)
+----------------------------------------------------------------------------------------------------
+Consulta: sintomas = diarreia, nausea, dor_abdominal
+
+[Recuperação] Casos mais semelhantes
+  Caso  Sim.   sintomas  temp.  duração  Diagnóstico         Sintomas do caso
+  C16   0.857  0.857       -       -       Gastroenterite      diarreia, vomito, nausea, dor_abdominal
+  C17   0.857  0.857       -       -       Gastroenterite      diarreia, dor_abdominal, fadiga, nausea
+  C18   0.625  0.625       -       -       Gastroenterite      diarreia, vomito, febre, dor_abdominal
+
+[Reutilização] Votam os casos com similaridade >= 0.729 (85% da maior); fora da margem: C18
+  Pontuação por diagnóstico (soma das similaridades):
+  Gastroenterite      1.714
+  Diagnóstico sugerido: Gastroenterite (confiança 100%, baseado no caso C16)
+  Tratamento associado: Reidratação oral, dieta leve, repouso; procurar atendimento se houver desidratação ou sangue nas fezes.
+
+[Revisão] Diagnóstico confirmado: Gastroenterite
+[Retenção] Caso gravado na base como C23. A base tem agora 23 casos.
+====================================================================================================
+Exemplo 5: sugestão errada, corrigida pelo profissional e retida
+----------------------------------------------------------------------------------------------------
+Consulta: sintomas = dor_cabeca, congestao_nasal, coriza; temperatura = 37.2 °C; duração = 10 dia(s); idade = 35
+
+[Recuperação] Casos mais semelhantes
+  Caso  Sim.   sintomas  temp.  duração  Diagnóstico         Sintomas do caso
+  C19   0.620  0.500     0.92   0.86     Sinusite            dor_face, congestao_nasal, dor_cabeca, coriza, tosse
+  C04   0.534  0.429     0.92   0.50     Resfriado comum     coriza, espirros, dor_garganta, congestao_nasal
+  C05   0.527  0.375     1.00   0.64     Resfriado comum     coriza, espirros, tosse, congestao_nasal, fadiga
+
+[Reutilização] Votam os casos com similaridade >= 0.527 (85% da maior)
+  Pontuação por diagnóstico (soma das similaridades):
+  Resfriado comum     1.061
+  Sinusite            0.620
+  Diagnóstico sugerido: Resfriado comum (confiança 63%, baseado no caso C04)
+  Tratamento associado: Repouso, hidratação, lavagem nasal com soro fisiológico; sintomáticos se necessário.
+
+[Revisão] Diagnóstico corrigido: Sinusite
+[Retenção] Caso gravado na base como C24. A base tem agora 24 casos.
+====================================================================================================
+Exemplo 6: a mesma consulta do exemplo 5 depois da retenção
+----------------------------------------------------------------------------------------------------
+Consulta: sintomas = dor_cabeca, congestao_nasal, coriza; temperatura = 37.2 °C; duração = 10 dia(s); idade = 35
+
+[Recuperação] Casos mais semelhantes
+  Caso  Sim.   sintomas  temp.  duração  Diagnóstico         Sintomas do caso
+  C24   1.000  1.000     1.00   1.00     Sinusite            congestao_nasal, coriza, dor_cabeca
+  C19   0.620  0.500     0.92   0.86     Sinusite            dor_face, congestao_nasal, dor_cabeca, coriza, tosse
+  C04   0.534  0.429     0.92   0.50     Resfriado comum     coriza, espirros, dor_garganta, congestao_nasal
+
+[Reutilização] Votam os casos com similaridade >= 0.850 (85% da maior); fora da margem: C19, C04
+  Pontuação por diagnóstico (soma das similaridades):
+  Sinusite            1.000
+  Diagnóstico sugerido: Sinusite (confiança 100%, baseado no caso C24)
+  Tratamento associado: Lavagem nasal com soro, hidratação, analgésico; reavaliar em 7 dias.
+
+[Revisão] Sugestão não revisada; o caso não foi retido.
+====================================================================================================
+Leave-one-out com k = 3: 18/20 corretos (90%)
+Erros: C10 (COVID-19 -> Gripe (influenza)); C11 (COVID-19 -> Gripe (influenza))

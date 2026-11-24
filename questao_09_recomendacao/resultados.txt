@@ -1,0 +1,103 @@
+Raciocinador HermiT executado: a ontologia é consistente.
+Ontologia: 24 classes, 21 propriedades, 35 indivíduos, 2 regras SWRL
+
+Classificação automática de atividades (classes definidas inferidas):
+  Alongamento              AtividadeBaixoImpacto, AtividadeEmCasa, AtividadeSemEquipamento
+  Caminhada                AtividadeBaixoImpacto, AtividadeParaEmagrecer, AtividadeSemEquipamento
+  Ciclismo                 AtividadeBaixoImpacto, AtividadeParaEmagrecer
+  Corrida                  AtividadeAltoImpacto, AtividadeParaEmagrecer, AtividadeSemEquipamento, AtividadeVigorosa
+  HIIT                     AtividadeAltoImpacto, AtividadeEmCasa, AtividadeParaEmagrecer, AtividadeSemEquipamento, AtividadeVigorosa
+  Hidroginastica           AtividadeBaixoImpacto, AtividadeSemEquipamento
+  Musculacao               AtividadeBaixoImpacto, AtividadeParaEmagrecer
+  Natacao                  AtividadeBaixoImpacto, AtividadeParaEmagrecer, AtividadeSemEquipamento
+  PilatesSolo              AtividadeBaixoImpacto, AtividadeEmCasa
+  PularCorda               AtividadeAltoImpacto, AtividadeEmCasa, AtividadeParaEmagrecer, AtividadeVigorosa
+  TreinoFuncionalComPeso   AtividadeAltoImpacto, AtividadeEmCasa
+  Yoga                     AtividadeBaixoImpacto, AtividadeEmCasa
+====================================================================================
+Usuário: Joao  (nível iniciante, 45 anos)
+  Objetivos: PerderPeso | Condições: LesaoNoJoelho
+  Acesso a: ArLivre, Casa, Piscina | Equipamentos: Tapete
+  Classes inferidas: UsuarioComRestricaoArticular, UsuarioIniciante
+  Relações inferidas: atividadeCandidata = Caminhada, Ciclismo, Corrida, HIIT, Musculacao, Natacao, PularCorda
+                      deveEvitar         = Corrida, HIIT, PularCorda, TreinoFuncionalComPeso
+
+  RECOMENDAÇÕES
+    1. Caminhada  (pontuação 3.5; 40 min; ~250 kcal/h; intensidade Leve)
+       por quê: atende a PerderPeso (+2); baixo impacto, adequado à restrição articular (+1); não exige equipamento (+0,5)
+       onde: ArLivre | classes: AtividadeBaixoImpacto, AtividadeParaEmagrecer, AtividadeSemEquipamento
+       alternativa semelhante: Ciclismo
+    2. Natacao  (pontuação 3.5; 40 min; ~450 kcal/h; intensidade Moderada)
+       por quê: atende a PerderPeso (+2); baixo impacto, adequado à restrição articular (+1); não exige equipamento (+0,5)
+       onde: Piscina | classes: AtividadeBaixoImpacto, AtividadeParaEmagrecer, AtividadeSemEquipamento
+       alternativa semelhante: Hidroginastica
+
+  DESCARTADAS (com o elemento da ontologia que motivou)
+    - Ciclismo: requer Bicicleta, que o usuário não possui
+    - Corrida: deve evitar: alto impacto e LesaoNoJoelho é ProblemaArticular (regra SWRL 1); intensidade vigorosa para usuário iniciante (regra SWRL 2)
+    - HIIT: deve evitar: alto impacto e LesaoNoJoelho é ProblemaArticular (regra SWRL 1); intensidade vigorosa para usuário iniciante (regra SWRL 2)
+    - Musculacao: realizada em Academia; usuário tem acesso a ArLivre, Casa, Piscina
+    - PularCorda: deve evitar: alto impacto e LesaoNoJoelho é ProblemaArticular (regra SWRL 1); intensidade vigorosa para usuário iniciante (regra SWRL 2)
+====================================================================================
+Usuário: Maria  (nível intermediario, 29 anos)
+  Objetivos: GanharForca, MelhorarCondicionamento | Condições: -
+  Acesso a: Academia, Casa | Equipamentos: Halteres, Tapete
+  Classes inferidas: -
+  Relações inferidas: atividadeCandidata = Caminhada, Ciclismo, Corrida, HIIT, Hidroginastica, Musculacao, Natacao, PilatesSolo, PularCorda, TreinoFuncionalComPeso
+                      deveEvitar         = -
+
+  RECOMENDAÇÕES
+    1. TreinoFuncionalComPeso  (pontuação 4; 30 min; ~400 kcal/h; intensidade Moderada)
+       por quê: atende a GanharForca, MelhorarCondicionamento (+4)
+       onde: Academia, Casa | classes: AtividadeAltoImpacto, AtividadeEmCasa
+    2. HIIT  (pontuação 2.5; 20 min; ~650 kcal/h; intensidade Vigorosa)
+       por quê: atende a MelhorarCondicionamento (+2); não exige equipamento (+0,5)
+       onde: Academia, Casa | classes: AtividadeAltoImpacto, AtividadeEmCasa, AtividadeParaEmagrecer, AtividadeSemEquipamento, AtividadeVigorosa
+    3. Musculacao  (pontuação 2; 50 min; ~300 kcal/h; intensidade Moderada)
+       por quê: atende a GanharForca (+2)
+       onde: Academia | classes: AtividadeBaixoImpacto, AtividadeParaEmagrecer
+  Também compatíveis: PilatesSolo
+
+  DESCARTADAS (com o elemento da ontologia que motivou)
+    - Caminhada: realizada em ArLivre; usuário tem acesso a Academia, Casa
+    - Ciclismo: realizada em ArLivre; usuário tem acesso a Academia, Casa
+    - Corrida: realizada em ArLivre; usuário tem acesso a Academia, Casa
+    - Hidroginastica: realizada em Piscina; usuário tem acesso a Academia, Casa
+    - Natacao: realizada em Piscina; usuário tem acesso a Academia, Casa
+    - PularCorda: requer Corda, que o usuário não possui
+====================================================================================
+Usuário: Pedro  (nível iniciante, 58 anos)
+  Objetivos: MelhorarFlexibilidade, ReduzirEstresse | Condições: Hipertensao
+  Acesso a: ArLivre, Casa | Equipamentos: -
+  Classes inferidas: UsuarioComRestricaoCardiaca, UsuarioIniciante
+  Relações inferidas: atividadeCandidata = Alongamento, Caminhada, Hidroginastica, PilatesSolo, Yoga
+                      deveEvitar         = Corrida, HIIT, PularCorda
+
+  RECOMENDAÇÕES
+    1. Alongamento  (pontuação 4.5; 20 min; ~120 kcal/h; intensidade Leve)
+       por quê: atende a MelhorarFlexibilidade, ReduzirEstresse (+4); não exige equipamento (+0,5)
+       onde: ArLivre, Casa | classes: AtividadeBaixoImpacto, AtividadeEmCasa, AtividadeSemEquipamento
+    2. Caminhada  (pontuação 2.5; 40 min; ~250 kcal/h; intensidade Leve)
+       por quê: atende a ReduzirEstresse (+2); não exige equipamento (+0,5)
+       onde: ArLivre | classes: AtividadeBaixoImpacto, AtividadeParaEmagrecer, AtividadeSemEquipamento
+       alternativa semelhante: Ciclismo
+
+  DESCARTADAS (com o elemento da ontologia que motivou)
+    - Hidroginastica: realizada em Piscina; usuário tem acesso a ArLivre, Casa
+    - PilatesSolo: requer Tapete, que o usuário não possui
+    - Yoga: requer Tapete, que o usuário não possui
+====================================================================================
+Consulta SPARQL sobre a ontologia inferida: atividades de baixo impacto, sem
+equipamento, que contribuem para MelhorarCondicionamento
+  PREFIX : <http://example.org/lista2/atividades.owl#>
+  SELECT ?a WHERE {
+      ?a a :AtividadeBaixoImpacto .
+      ?a a :AtividadeSemEquipamento .
+      ?a :contribuiPara :MelhorarCondicionamento .
+  }
+  Resultado: Caminhada, Hidroginastica, Natacao
+====================================================================================
+Verificação de consistência
+  Declarando Corrida também como de impacto 'baixo' (impactoArticular é funcional,
+  e AtividadeBaixoImpacto e AtividadeAltoImpacto são disjuntas)...
+  Resultado: o HermiT detectou que a ontologia é INCONSISTENTE.

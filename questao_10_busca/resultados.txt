@@ -1,0 +1,119 @@
+========================================================================
+FORMULAÇÃO
+  Estados: {A, B, C, D, E, F, G, H, I} (localidade atual do entregador)
+  Estado inicial: A    Teste de objetivo: estado == I
+  Ações em s: ir para um vizinho de s;  Transição: Resultado(s, ir(v)) = v
+  Custo do passo: minutos do trecho; custo do caminho: soma dos trechos
+  Grafo:
+    A -> B(4), D(3)
+    B -> A(4), C(5), E(2)
+    C -> B(5), F(2)
+    D -> A(3), E(4), G(6)
+    E -> B(2), D(4), F(3), H(5)
+    F -> C(2), E(3), I(4)
+    G -> D(6), H(3)
+    H -> E(5), G(3), I(2)
+    I -> F(4), H(2)
+========================================================================
+BUSCA EM PROFUNDIDADE (DFS)
+  Ordem de expansão: A B C F E D G H I
+  Rota: A-B-C-F-E-D-G-H-I  Custo: 29
+========================================================================
+BUSCA EM LARGURA (BFS)
+  Ordem de expansão: A B D C E G F (I encontrado ao ser gerado a partir de F)
+  Rota: A-B-C-F-I  Custo: 15
+========================================================================
+BUSCA DE CUSTO UNIFORME (UCS) - prioridade g(n)
+  expande A  g= 0  fronteira: D(3), B(4)
+  expande D  g= 3  fronteira: B(4), E(7), G(9)
+  expande B  g= 4  fronteira: E(6), C(9), G(9)
+  expande E  g= 6  fronteira: C(9), F(9), G(9), H(11)
+  expande C  g= 9  fronteira: F(9), G(9), H(11)
+  expande F  g= 9  fronteira: G(9), H(11), I(13)
+  expande G  g= 9  fronteira: H(11), I(13)
+  expande H  g=11  fronteira: I(13)
+  expande I  g=13  -> objetivo alcançado
+  Ordem de expansão: A D B E C F G H I
+  Rota: A-B-E-F-I  Custo: 13
+========================================================================
+Admissibilidade: h(n) <= h*(n)
+  estado  h(n)  h*(n)  ok
+  A         10     13  sim
+  B          8      9  sim
+  C          6      6  sim
+  D          9     11  sim
+  E          6      7  sim
+  F          4      4  sim
+  G          5      5  sim
+  H          2      2  sim
+  I          0      0  sim
+Consistência (h(u) <= c(u,v) + h(v) em todas as arestas): sim
+------------------------------------------------------------------------
+A* - prioridade f(n) = g(n) + h(n)
+  expande A  g= 0  fronteira: B(12), D(12)
+  expande B  g= 4  fronteira: D(12), E(12), C(15)
+  expande E  g= 6  fronteira: D(12), F(13), H(13), C(15)
+  expande D  g= 3  fronteira: F(13), H(13), G(14), C(15)
+  expande H  g=11  fronteira: F(13), I(13), G(14), C(15)
+  expande I  g=13  -> objetivo alcançado
+  Nós expandidos, na ordem:
+    nó   g(n)  h(n)  f(n)
+    A       0    10    10
+    B       4     8    12
+    E       6     6    12
+    D       3     9    12
+    H      11     2    13
+    I      13     0    13
+  Ordem de expansão: A B E D H I
+  Rota: A-B-E-H-I  Custo: 13
+========================================================================
+COMPARAÇÃO
+  Algoritmo Rota                Custo Expandidos  Gerados  Completo  Ótimo
+  DFS       A-B-C-F-E-D-G-H-I      29          9       13  sim*      não
+  BFS       A-B-C-F-I              15          7        9  sim       não**
+  UCS       A-B-E-F-I              13          9       10  sim       sim
+  A*        A-B-E-H-I              13          6        9  sim       sim***
+  *   em grafos finitos com controle de repetidos; não é completa em espaços infinitos
+  **  ótima só quando todos os custos de passo são iguais
+  *** com heurística admissível (busca em árvore) ou consistente (busca em grafo)
+  Custo ótimo real de A até I (Dijkstra): 13
+========================================================================
+VARIANTE: passar por D e F (qualquer ordem) antes de chegar a I
+  Estado: (local, visitou_D, visitou_F); exibido como local + D/F visitados
+-- UCS no espaço ampliado --
+  expande A--   g= 0 h= 0 f= 0
+  expande DD-   g= 3 h= 0 f= 3
+  expande B--   g= 4 h= 0 f= 4
+  expande AD-   g= 6 h= 0 f= 6
+  expande E--   g= 6 h= 0 f= 6
+  expande ED-   g= 7 h= 0 f= 7
+  expande BD-   g= 9 h= 0 f= 9
+  expande C--   g= 9 h= 0 f= 9
+  expande F-F   g= 9 h= 0 f= 9
+  expande GD-   g= 9 h= 0 f= 9
+  expande FDF   g=10 h= 0 f=10
+  expande C-F   g=11 h= 0 f=11
+  expande H--   g=11 h= 0 f=11
+  expande CDF   g=12 h= 0 f=12
+  expande E-F   g=12 h= 0 f=12
+  expande HD-   g=12 h= 0 f=12
+  expande EDF   g=13 h= 0 f=13
+  expande B-F   g=14 h= 0 f=14
+  expande CD-   g=14 h= 0 f=14
+  expande G--   g=14 h= 0 f=14
+  expande IDF   g=14 h= 0 f=14
+  Rota: A-D-E-F-I  Custo: 14  Expandidos: 21
+-- A* no espaço ampliado, h((n, d, f)) = h(n) --
+  expande A--   g= 0 h=10 f=10
+  expande B--   g= 4 h= 8 f=12
+  expande DD-   g= 3 h= 9 f=12
+  expande E--   g= 6 h= 6 f=12
+  expande ED-   g= 7 h= 6 f=13
+  expande F-F   g= 9 h= 4 f=13
+  expande H--   g=11 h= 2 f=13
+  expande FDF   g=10 h= 4 f=14
+  expande GD-   g= 9 h= 5 f=14
+  expande HD-   g=12 h= 2 f=14
+  expande IDF   g=14 h= 0 f=14
+  Rota: A-D-E-F-I  Custo: 14  Expandidos: 11
+  Conferência por permutação das visitas obrigatórias: A -> D -> F -> I custo 14

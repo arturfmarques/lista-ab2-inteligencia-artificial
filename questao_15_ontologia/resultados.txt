@@ -1,0 +1,52 @@
+Ontologia salva em academico.owl
+  13 classes, 12 propriedades de objeto, 2 propriedades de dados, 12 indivíduos, 2 regras SWRL
+
+ANTES do raciocínio (classes declaradas):
+  Algoritmos               é: Disciplina
+  Ana                      é: Aluno
+  AprendizadoDeMaquina     é: Disciplina
+  Bruno                    é: AlunoGraduacao
+  Carla                    é: AlunoPosGraduacao
+  CienciaDaComputacao      é: Curso
+  FundamentosDaComputacao  é: AreaConhecimento
+  IA                       é: Disciplina
+  InteligenciaArtificial   é: AreaConhecimento
+  ProfEvandro              é: Professor
+  ProfMarta                é: Pessoa
+  Programacao              é: Disciplina
+
+============================================================================
+RACIOCÍNIO: HermiT (classificação, domínio, transitividade, cadeia de propriedades,
+            regra SWRL)
+
+DEPOIS do HermiT (classes inferidas):
+  Algoritmos               é: DisciplinaAvancada
+  Ana                      é: Aluno
+  AprendizadoDeMaquina     é: DisciplinaAvancada, DisciplinaDeIA
+  Bruno                    é: AlunoGraduacao, Monitor
+  Carla                    é: AlunoPosGraduacao
+  CienciaDaComputacao      é: Curso
+  FundamentosDaComputacao  é: AreaConhecimento
+  IA                       é: DisciplinaAvancada, DisciplinaDeIA
+  InteligenciaArtificial   é: AreaConhecimento
+  ProfEvandro              é: DocenteDeIA, Orientador
+  ProfMarta                é: Professor
+  Programacao              é: Disciplina
+
+Hierarquia de classes inferida (classes definidas):
+  Monitor              subclasse de: Aluno   instâncias: Bruno
+  Orientador           subclasse de: Professor   instâncias: ProfEvandro
+  DisciplinaAvancada   subclasse de: Disciplina   instâncias: Algoritmos, AprendizadoDeMaquina, IA
+  DocenteDeIA          subclasse de: Professor   instâncias: ProfEvandro
+
+Propriedades: declarado  ->  depois do raciocínio
+  temPreRequisito(AprendizadoDeMaquina)    IA                     ->  Algoritmos, IA, Programacao
+  pesquisaEm(ProfEvandro)                  -                      ->  InteligenciaArtificial
+  deveCursarAntes(Ana)                     -                      ->  Algoritmos, IA, Programacao
+
+============================================================================
+VERIFICAÇÃO DE CONSISTÊNCIA
+  Declarando ProfEvandro também como Aluno (Aluno e Professor são disjuntas)...
+  Resultado: o HermiT detectou que a ontologia é INCONSISTENTE.
+
+Arquivos: academico.owl (declarado) e academico_inferido.owl (com inferências)

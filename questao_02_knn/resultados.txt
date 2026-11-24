@@ -1,0 +1,68 @@
+==============================================================================
+Cliente novo: Historia_Credito=Desconhecida, Divida=Alta, Garantia=Adequada, Renda=15-35, Emprego=Estavel, Idade=Adulto
+
+Passo 1. Distância de Hamming do cliente a cada um dos 30 exemplos
+  Exemplo  Historia_Cre  Divida        Garantia      Renda         Emprego       Idade         Risco      d
+  E1       *Ruim         Alta          *Nenhuma      *0-15         *Instavel     *Jovem        Alto      5
+  E2       Desconhecida  Alta          *Nenhuma      15-35         *Instavel     *Jovem        Alto      3
+  E3       Desconhecida  *Baixa        *Nenhuma      15-35         Estavel       Adulto        Moderado  2
+  E4       Desconhecida  *Baixa        *Nenhuma      *0-15         *Instavel     *Jovem        Alto      5
+  E5       Desconhecida  *Baixa        *Nenhuma      *35+          Estavel       *Jovem        Baixo     4
+  E6       Desconhecida  *Baixa        Adequada      *35+          Estavel       *Jovem        Baixo     3
+  E7       *Ruim         *Baixa        *Nenhuma      *0-15         *Instavel     Adulto        Alto      5
+  E8       *Ruim         *Baixa        Adequada      *35+          Estavel       Adulto        Moderado  3
+  E9       *Boa          *Baixa        *Nenhuma      *35+          Estavel       Adulto        Baixo     4
+  E10      *Boa          Alta          Adequada      *35+          Estavel       *Jovem        Baixo     3
+  E11      *Boa          Alta          *Nenhuma      *0-15         *Instavel     *Jovem        Alto      5
+  E12      *Boa          Alta          *Nenhuma      15-35         Estavel       *Jovem        Moderado  3
+  E13      *Boa          Alta          *Nenhuma      *35+          Estavel       Adulto        Baixo     3
+  E14      *Ruim         Alta          *Nenhuma      15-35         *Instavel     Adulto        Alto      3
+  E15      *Boa          *Baixa        Adequada      *35+          Estavel       *Jovem        Baixo     4
+  E16      *Boa          *Baixa        *Nenhuma      15-35         Estavel       *Jovem        Baixo     4
+  E17      *Boa          Alta          *Nenhuma      15-35         Estavel       Adulto        Moderado  2
+  E18      *Boa          Alta          Adequada      15-35         Estavel       Adulto        Baixo     1
+  E19      Desconhecida  Alta          Adequada      *35+          Estavel       Adulto        Moderado  1
+  E20      Desconhecida  *Baixa        Adequada      15-35         Estavel       Adulto        Baixo     1
+  E21      *Ruim         Alta          Adequada      *35+          *Instavel     *Jovem        Moderado  4
+  E22      *Ruim         *Baixa        Adequada      15-35         *Instavel     *Jovem        Moderado  4
+  E23      *Ruim         *Baixa        *Nenhuma      *35+          Estavel       Adulto        Moderado  4
+  E24      Desconhecida  Alta          *Nenhuma      *35+          Estavel       *Jovem        Moderado  3
+  E25      *Boa          *Baixa        *Nenhuma      *35+          Estavel       Adulto        Baixo     4
+  E26      *Boa          Alta          Adequada      *35+          Estavel       *Jovem        Baixo     3
+  E27      *Ruim         Alta          *Nenhuma      *0-15         *Instavel     Adulto        Alto      4
+  E28      Desconhecida  Alta          *Nenhuma      *0-15         *Instavel     Adulto        Alto      3
+  E29      *Ruim         *Baixa        *Nenhuma      15-35         *Instavel     *Jovem        Alto      5
+  E30      Desconhecida  *Baixa        *Nenhuma      *0-15         *Instavel     *Jovem        Alto      5
+  (* marca o atributo que difere do cliente; cada * soma 1 à distância)
+
+Passo 2. Ordenar pela distância e pegar os k = 3 mais próximos
+  1º  E18  d = 1  Risco = Baixo
+  2º  E19  d = 1  Risco = Moderado
+  3º  E20  d = 1  Risco = Baixo
+
+Passo 3. Votação
+  Baixo: 2 voto(s)
+  Moderado: 1 voto(s)
+  Classe prevista: Risco = Baixo
+==============================================================================
+
+Avaliação leave-one-out (cada exemplo é classificado pelos outros 29)
+   k   Hamming   Ordinal   scikit-learn (Hamming)
+   1     0.667     0.667     0.667
+   3     0.567     0.667     0.600
+   5     0.633     0.700     0.633
+   7     0.700     0.667     0.700
+   9     0.633     0.667     0.700
+  Obs.: com Hamming a distância só assume 7 valores (0 a 6) e há muitos empates.
+  O scikit-learn escolhe de outro modo entre exemplos empatados na k-ésima distância
+  e desempata votos pela ordem alfabética das classes; daí as pequenas diferenças.
+
+Matriz de confusão (leave-one-out, Hamming, k = 3)
+Previsto  Baixo  Moderado  Alto
+Real                           
+Baixo         7         4     0
+Moderado      7         0     2
+Alto          0         0    10
+Exemplos classificados errado: E3, E5, E8, E12, E16, E17, E18, E19, E20, E21, E22, E23, E24
+
+Gráfico salvo em acuracia_por_k.png

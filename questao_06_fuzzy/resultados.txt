@@ -1,0 +1,53 @@
+==========================================================================
+Base de regras
+  R1: SE umidade é seco E temperatura é baixa ENTÃO tempo é medio
+  R2: SE umidade é seco E temperatura é media ENTÃO tempo é longo
+  R3: SE umidade é seco E temperatura é alta ENTÃO tempo é longo
+  R4: SE umidade é ideal E temperatura é baixa ENTÃO tempo é nulo
+  R5: SE umidade é ideal E temperatura é media ENTÃO tempo é curto
+  R6: SE umidade é ideal E temperatura é alta ENTÃO tempo é medio
+  R7: SE umidade é umido E temperatura é baixa ENTÃO tempo é nulo
+  R8: SE umidade é umido E temperatura é media ENTÃO tempo é nulo
+  R9: SE umidade é umido E temperatura é alta ENTÃO tempo é curto
+==========================================================================
+Entradas: umidade = 33.0 %, temperatura = 31.0 °C
+
+Etapa 1 - Fuzzificação
+  umidade:     seco = 0.350, ideal = 0.150, umido = 0.000
+  temperatura: baixa = 0.000, media = 0.143, alta = 0.429
+
+Etapa 2 - Ativação das regras (E = mínimo)
+  R2: SE umidade é seco (0.350) E temperatura é media (0.143) ENTÃO tempo é longo  ->  alfa = 0.143
+  R3: SE umidade é seco (0.350) E temperatura é alta (0.429) ENTÃO tempo é longo  ->  alfa = 0.350
+  R5: SE umidade é ideal (0.150) E temperatura é media (0.143) ENTÃO tempo é curto  ->  alfa = 0.143
+  R6: SE umidade é ideal (0.150) E temperatura é alta (0.429) ENTÃO tempo é medio  ->  alfa = 0.150
+  Regras com ativação 0: R1, R4, R7, R8, R9
+
+Etapa 3 - Implicação (mínimo) e Etapa 4 - Agregação (máximo)
+  tempo é nulo : cortado na altura 0.000
+  tempo é curto: cortado na altura 0.143
+  tempo é medio: cortado na altura 0.150
+  tempo é longo: cortado na altura 0.350
+
+Etapa 5 - Defuzzificação pelo centroide: z* = soma(z * mu(z)) / soma(mu(z))
+  Tempo de irrigação = 38.75 min
+
+Conferência com scikit-fuzzy: 38.73 min (diferença 0.0149)
+
+Outros métodos de defuzzificação sobre a mesma saída agregada:
+  centroide           38.73 min
+  bissetriz           42.10 min
+  média dos máximos   49.25 min
+  menor dos máximos   38.50 min
+  maior dos máximos   60.00 min
+==========================================================================
+Outros cenários (centroide):
+  umidade  temperatura   tempo (manual)   tempo (scikit-fuzzy)
+      10 %        35 °C          49.80 min          49.79 min
+      20 %        18 °C          30.00 min          30.00 min
+      45 %        25 °C          15.00 min          15.00 min
+      50 %        38 °C          30.00 min          30.00 min
+      65 %        30 °C          19.45 min          19.46 min
+      90 %        40 °C          15.00 min          15.00 min
+
+Figuras salvas em ./figuras

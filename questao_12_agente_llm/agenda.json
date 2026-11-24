@@ -1,0 +1,27 @@
+{
+  "dias": {
+    "hoje": {
+      "janela_disponivel": {"inicio": "14:00", "fim": "18:00"},
+      "compromissos_fixos": [
+        {"id": "C", "nome": "Reunião de pesquisa", "inicio": "16:00", "duracao_min": 60}
+      ]
+    },
+    "amanha": {
+      "janela_disponivel": {"inicio": "08:00", "fim": "12:00"},
+      "compromissos_fixos": [
+        {"id": "E", "nome": "Aula de IA", "inicio": "10:00", "duracao_min": 100}
+      ]
+    }
+  },
+  "tarefas_pendentes": [
+    {"id": "A", "nome": "Preparar aula de IA", "duracao_min": 90, "prioridade": "alta",
+     "prazo": "hoje", "divisivel": false, "palavras": ["aula", "preparar"]},
+    {"id": "B", "nome": "Corrigir trabalhos", "duracao_min": 120, "prioridade": "media",
+     "prazo": "amanha", "divisivel": true, "palavras": ["corrigir", "trabalhos", "correção"]},
+    {"id": "C", "nome": "Reunião de pesquisa", "duracao_min": 60, "prioridade": "alta",
+     "prazo": "hoje", "inicio_fixo": "16:00", "divisivel": false,
+     "palavras": ["reunião", "reuniao", "pesquisa"]},
+    {"id": "D", "nome": "Revisar artigo", "duracao_min": 60, "prioridade": "baixa",
+     "prazo": "semana", "divisivel": false, "palavras": ["artigo", "revisar"]}
+  ]
+}

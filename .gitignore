@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+# base de casos de trabalho da questão 7 (criada a partir de casos_iniciais.json)
+questao_07_rbc/casos.json
+questao_07_rbc/casos_demo.json

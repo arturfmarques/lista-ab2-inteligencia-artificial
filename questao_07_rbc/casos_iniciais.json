@@ -1,0 +1,317 @@
+[
+ {
+  "id": "C01",
+  "idade": 34,
+  "sintomas": [
+   "febre",
+   "tosse",
+   "dor_muscular",
+   "dor_cabeca",
+   "fadiga",
+   "dor_garganta"
+  ],
+  "temperatura": 39.0,
+  "duracao_dias": 3,
+  "diagnostico": "Gripe (influenza)",
+  "tratamento": "Repouso, hidratação e antitérmico/analgésico com orientação médica; avaliar antiviral nos grupos de risco.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C02",
+  "idade": 52,
+  "sintomas": [
+   "febre",
+   "tosse",
+   "dor_muscular",
+   "fadiga",
+   "calafrios"
+  ],
+  "temperatura": 38.8,
+  "duracao_dias": 4,
+  "diagnostico": "Gripe (influenza)",
+  "tratamento": "Repouso, hidratação e antitérmico/analgésico com orientação médica; avaliar antiviral nos grupos de risco.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C03",
+  "idade": 21,
+  "sintomas": [
+   "febre",
+   "tosse",
+   "dor_garganta",
+   "dor_muscular",
+   "coriza",
+   "calafrios"
+  ],
+  "temperatura": 39.2,
+  "duracao_dias": 2,
+  "diagnostico": "Gripe (influenza)",
+  "tratamento": "Repouso, hidratação e antitérmico/analgésico com orientação médica; avaliar antiviral nos grupos de risco.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C04",
+  "idade": 28,
+  "sintomas": [
+   "coriza",
+   "espirros",
+   "dor_garganta",
+   "congestao_nasal"
+  ],
+  "temperatura": 36.8,
+  "duracao_dias": 3,
+  "diagnostico": "Resfriado comum",
+  "tratamento": "Repouso, hidratação, lavagem nasal com soro fisiológico; sintomáticos se necessário.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C05",
+  "idade": 45,
+  "sintomas": [
+   "coriza",
+   "espirros",
+   "tosse",
+   "congestao_nasal",
+   "fadiga"
+  ],
+  "temperatura": 37.2,
+  "duracao_dias": 5,
+  "diagnostico": "Resfriado comum",
+  "tratamento": "Repouso, hidratação, lavagem nasal com soro fisiológico; sintomáticos se necessário.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C06",
+  "idade": 9,
+  "sintomas": [
+   "coriza",
+   "espirros",
+   "dor_garganta",
+   "tosse"
+  ],
+  "temperatura": 37.4,
+  "duracao_dias": 4,
+  "diagnostico": "Resfriado comum",
+  "tratamento": "Repouso, hidratação, lavagem nasal com soro fisiológico; sintomáticos se necessário.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C07",
+  "idade": 30,
+  "sintomas": [
+   "febre",
+   "dor_atras_olhos",
+   "dor_muscular",
+   "dor_cabeca",
+   "manchas_pele",
+   "fadiga"
+  ],
+  "temperatura": 39.5,
+  "duracao_dias": 3,
+  "diagnostico": "Dengue",
+  "tratamento": "Hidratação oral vigorosa, repouso, paracetamol com orientação médica; evitar AINEs e AAS; observar sinais de alarme.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C08",
+  "idade": 41,
+  "sintomas": [
+   "febre",
+   "dor_atras_olhos",
+   "dor_muscular",
+   "dor_articular",
+   "nausea"
+  ],
+  "temperatura": 39.0,
+  "duracao_dias": 4,
+  "diagnostico": "Dengue",
+  "tratamento": "Hidratação oral vigorosa, repouso, paracetamol com orientação médica; evitar AINEs e AAS; observar sinais de alarme.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C09",
+  "idade": 17,
+  "sintomas": [
+   "febre",
+   "dor_cabeca",
+   "manchas_pele",
+   "dor_articular",
+   "dor_atras_olhos",
+   "vomito"
+  ],
+  "temperatura": 38.9,
+  "duracao_dias": 5,
+  "diagnostico": "Dengue",
+  "tratamento": "Hidratação oral vigorosa, repouso, paracetamol com orientação médica; evitar AINEs e AAS; observar sinais de alarme.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C10",
+  "idade": 38,
+  "sintomas": [
+   "febre",
+   "tosse",
+   "perda_olfato",
+   "fadiga",
+   "dor_cabeca"
+  ],
+  "temperatura": 38.2,
+  "duracao_dias": 4,
+  "diagnostico": "COVID-19",
+  "tratamento": "Isolamento, repouso, hidratação, sintomáticos; procurar atendimento se houver falta de ar; testagem.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C11",
+  "idade": 63,
+  "sintomas": [
+   "febre",
+   "tosse",
+   "falta_ar",
+   "fadiga",
+   "dor_muscular"
+  ],
+  "temperatura": 38.6,
+  "duracao_dias": 6,
+  "diagnostico": "COVID-19",
+  "tratamento": "Isolamento, repouso, hidratação, sintomáticos; procurar atendimento se houver falta de ar; testagem.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C12",
+  "idade": 25,
+  "sintomas": [
+   "tosse",
+   "perda_olfato",
+   "perda_paladar",
+   "dor_garganta",
+   "coriza"
+  ],
+  "temperatura": 37.5,
+  "duracao_dias": 3,
+  "diagnostico": "COVID-19",
+  "tratamento": "Isolamento, repouso, hidratação, sintomáticos; procurar atendimento se houver falta de ar; testagem.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C13",
+  "idade": 29,
+  "sintomas": [
+   "dor_cabeca",
+   "sensibilidade_luz",
+   "nausea",
+   "sensibilidade_som"
+  ],
+  "temperatura": 36.6,
+  "duracao_dias": 1,
+  "diagnostico": "Enxaqueca",
+  "tratamento": "Ambiente escuro e silencioso, analgésico/triptano conforme prescrição; registrar gatilhos.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C14",
+  "idade": 36,
+  "sintomas": [
+   "dor_cabeca",
+   "sensibilidade_luz",
+   "visao_turva",
+   "nausea"
+  ],
+  "temperatura": 36.7,
+  "duracao_dias": 1,
+  "diagnostico": "Enxaqueca",
+  "tratamento": "Ambiente escuro e silencioso, analgésico/triptano conforme prescrição; registrar gatilhos.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C15",
+  "idade": 19,
+  "sintomas": [
+   "dor_cabeca",
+   "sensibilidade_som",
+   "vomito",
+   "sensibilidade_luz"
+  ],
+  "temperatura": 36.8,
+  "duracao_dias": 2,
+  "diagnostico": "Enxaqueca",
+  "tratamento": "Ambiente escuro e silencioso, analgésico/triptano conforme prescrição; registrar gatilhos.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C16",
+  "idade": 27,
+  "sintomas": [
+   "diarreia",
+   "vomito",
+   "nausea",
+   "dor_abdominal"
+  ],
+  "temperatura": 37.8,
+  "duracao_dias": 2,
+  "diagnostico": "Gastroenterite",
+  "tratamento": "Reidratação oral, dieta leve, repouso; procurar atendimento se houver desidratação ou sangue nas fezes.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C17",
+  "idade": 58,
+  "sintomas": [
+   "diarreia",
+   "dor_abdominal",
+   "fadiga",
+   "nausea"
+  ],
+  "temperatura": 37.3,
+  "duracao_dias": 3,
+  "diagnostico": "Gastroenterite",
+  "tratamento": "Reidratação oral, dieta leve, repouso; procurar atendimento se houver desidratação ou sangue nas fezes.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C18",
+  "idade": 12,
+  "sintomas": [
+   "diarreia",
+   "vomito",
+   "febre",
+   "dor_abdominal"
+  ],
+  "temperatura": 38.3,
+  "duracao_dias": 1,
+  "diagnostico": "Gastroenterite",
+  "tratamento": "Reidratação oral, dieta leve, repouso; procurar atendimento se houver desidratação ou sangue nas fezes.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C19",
+  "idade": 33,
+  "sintomas": [
+   "dor_face",
+   "congestao_nasal",
+   "dor_cabeca",
+   "coriza",
+   "tosse"
+  ],
+  "temperatura": 37.6,
+  "duracao_dias": 8,
+  "diagnostico": "Sinusite",
+  "tratamento": "Lavagem nasal com soro, hidratação, analgésico; avaliação médica se passar de 10 dias ou com febre alta.",
+  "origem": "base inicial (fictício)"
+ },
+ {
+  "id": "C20",
+  "idade": 47,
+  "sintomas": [
+   "dor_face",
+   "congestao_nasal",
+   "secrecao_espessa",
+   "dor_cabeca"
+  ],
+  "temperatura": 37.9,
+  "duracao_dias": 12,
+  "diagnostico": "Sinusite",
+  "tratamento": "Lavagem nasal com soro, hidratação, analgésico; avaliação médica se passar de 10 dias ou com febre alta.",
+  "origem": "base inicial (fictício)"
+ }
+]
