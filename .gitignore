@@ -1,5 +1,27 @@
+# Python
 __pycache__/
 *.pyc
-# base de casos de trabalho da questão 7 (criada a partir de casos_iniciais.json)
+*.pyo
+*.pyd
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Variáveis de ambiente e credenciais
+.env
+.env.*
+!.env.example
+
+# IDEs
+.vscode/
+.idea/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários da questão 7
 questao_07_rbc/casos.json
 questao_07_rbc/casos_demo.json

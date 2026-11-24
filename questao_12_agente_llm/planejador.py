@@ -145,7 +145,10 @@ def planejar(tarefas, inicio="14:00", fim="18:00", permitir_divisao=False):
                 motivo = (f"não cabe em nenhum intervalo livre contínuo "
                           f"({t['duracao_min']} min)")
             else:
-                u_alt = alt[0][0]
+                u_alt = alt[0][0] + sum(
+                    utilidade(por_id[i], b - a)
+                        for a, b, i in blocos_fixos
+                )
                 mudancas = []
                 for x, tx in por_id.items():
                     if x == i or tx.get("inicio_fixo"):

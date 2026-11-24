@@ -4,7 +4,7 @@ Professor: Preciso preparar uma aula de Inteligência Artificial, corrigir traba
 Assistente: Organizei suas atividades assim:
 - 14:00–15:30: Preparar aula de IA
 - 16:00–17:00: Reunião de pesquisa
-Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 7.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois).
+Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 22.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois).
 O plano passou na verificação de restrições.
 
 ── Base da decisão (planejador e verificador, não o LLM) ──
@@ -13,7 +13,7 @@ O plano passou na verificação de restrições.
   Utilidade: 30 de 37.2 possíveis. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
   Tempo livre: 15:30-16:00, 17:00-18:00
   A (Preparar aula de IA): incluída: prioridade alta, prazo hoje, utilidade 15
-  B (Corrigir trabalhos): não incluída: incluí-la daria utilidade total 7.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois
+  B (Corrigir trabalhos): não incluída: incluí-la daria utilidade total 22.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois
   C (Reunião de pesquisa): compromisso fixo às 16:00; mantido no horário (utilidade 15)
   Verificação: plano válido (sem sobreposição, dentro da janela, compromissos fixos respeitados).
 ==========================================================================================
@@ -30,7 +30,7 @@ Rastro do último pedido:
   [LLM] Organizei suas atividades assim:
 - 14:00–15:30: Preparar aula de IA
 - 16:00–17:00: Reunião de pesquisa
-Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 7.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois).
+Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 22.2 em vez de 30 (A sairia); o prazo (amanha) permite fazer depois).
 O plano passou na verificação de restrições.
 ==========================================================================================
 Professor: Quero aproveitar o resto da tarde para revisar o artigo também. Organize de novo, incluindo a revisão do artigo.
@@ -39,7 +39,7 @@ Assistente: Organizei suas atividades assim:
 - 14:00–15:30: Preparar aula de IA
 - 16:00–17:00: Reunião de pesquisa
 - 17:00–18:00: Revisar artigo
-Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 9.2 em vez de 32 (A sairia); o prazo (amanha) permite fazer depois).
+Ficou de fora: Corrigir trabalhos (não incluída: incluí-la daria utilidade total 24.2 em vez de 32 (A sairia); o prazo (amanha) permite fazer depois).
 O plano passou na verificação de restrições.
 
 ── Base da decisão (planejador e verificador, não o LLM) ──
@@ -49,7 +49,7 @@ O plano passou na verificação de restrições.
   Utilidade: 32 de 39.2 possíveis. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
   Tempo livre: 15:30-16:00
   A (Preparar aula de IA): incluída: prioridade alta, prazo hoje, utilidade 15
-  B (Corrigir trabalhos): não incluída: incluí-la daria utilidade total 9.2 em vez de 32 (A sairia); o prazo (amanha) permite fazer depois
+  B (Corrigir trabalhos): não incluída: incluí-la daria utilidade total 24.2 em vez de 32 (A sairia); o prazo (amanha) permite fazer depois
   C (Reunião de pesquisa): compromisso fixo às 16:00; mantido no horário (utilidade 15)
   D (Revisar artigo): incluída: prioridade baixa, prazo semana, utilidade 2
   Verificação: plano válido (sem sobreposição, dentro da janela, compromissos fixos respeitados).
@@ -61,7 +61,7 @@ Assistente: Organizei suas atividades assim:
 - 15:30–16:00: Corrigir trabalhos
 - 16:00–17:00: Reunião de pesquisa
 - 17:00–18:00: Corrigir trabalhos
-Ficou de fora: Revisar artigo (não incluída: incluí-la daria utilidade total 18.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois).
+Ficou de fora: Revisar artigo (não incluída: incluí-la daria utilidade total 33.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois).
 Corrigir trabalhos foi feita em parte (90 min); o restante fica para depois.
 O plano passou na verificação de restrições.
 
@@ -74,12 +74,12 @@ O plano passou na verificação de restrições.
   A (Preparar aula de IA): incluída: prioridade alta, prazo hoje, utilidade 15
   B (Corrigir trabalhos): incluída em parte (90 de 120 min): o tempo livre não comporta a tarefa inteira; utilidade 5.4 de 7.2
   C (Reunião de pesquisa): compromisso fixo às 16:00; mantido no horário (utilidade 15)
-  D (Revisar artigo): não incluída: incluí-la daria utilidade total 18.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois
+  D (Revisar artigo): não incluída: incluí-la daria utilidade total 33.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois
   Verificação: plano válido (sem sobreposição, dentro da janela, compromissos fixos respeitados).
 ==========================================================================================
 Professor: Por que a revisão do artigo ficou de fora?
 ------------------------------------------------------------------------------------------
-Assistente: Revisar artigo: não incluída: incluí-la daria utilidade total 18.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
+Assistente: Revisar artigo: não incluída: incluí-la daria utilidade total 33.8 em vez de 35.4 (B cairia de 90 para 30 min); o prazo (semana) permite fazer depois. Critério: utilidade = peso da prioridade (alta 10, media 6, baixa 2) x fator do prazo (hoje 1,5; amanha 1,2; outro 1,0).
 ==========================================================================================
 Professor: /porque B
 ------------------------------------------------------------------------------------------
