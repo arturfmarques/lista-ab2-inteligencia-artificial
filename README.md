@@ -23,7 +23,11 @@ Requisitos: Python 3.10+ e Java 11+ (questões 9 e 15).
 python -m pip install -r requirements.txt
 ```
 
-Cada questão possui uma pasta própria com os códigos, resultados e instruções de execução. As respostas teóricas e os vídeos demonstrativos constam na documentação entregue separadamente. A demonstração padrão da questão 12 utiliza um backend simulado.
+Cada questão possui uma pasta própria com os códigos, resultados e instruções de execução. A demonstração padrão da questão 12 utiliza um backend simulado.
+
+## Documentação
+
+- [Lista 2 de IA 2026.2 - Respostas.pdf](docs/Lista%202%20de%20IA%202026.2%20-%20Respostas%282%29.pdf)
 
 ## Integrantes
 
