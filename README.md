@@ -27,7 +27,7 @@ Cada questão possui uma pasta própria com os códigos, resultados e instruçõ
 
 ## Documentação
 
-- [Lista 2 de IA 2026.2 - Respostas.pdf](docs/Lista%202%20de%20IA%202026.2%20-%20Respostas%282%29.pdf)
+- [Lista 2 de IA 2026.2 - Respostas.pdf](docs/Lista%202%20de%20IA%202026.2%20-%20Respostas.pdf)
 
 ## Integrantes
 
